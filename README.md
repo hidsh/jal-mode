@@ -1,6 +1,8 @@
 # jal-mode
 
-** WIP **
+![Screenshot](ss.png)
+
+**WIP**
 
 This major mode is for editing [JAL (Just Another Language)](http://justanotherlanguage.org/).
 
@@ -9,13 +11,13 @@ JAL is a programming language to program Microchip PIC controllers.
 This major mode will support jalv2 compiler.
 
 
-## links
+## Links
 - [JAL (Just Another Language)](http://justanotherlanguage.org/)
 - [jallib](https://github.com/jallib/jallib)
 
 
 ## TODO
-- [x] font-lock coloring
+- [x] font-lock syntax highlighting
 - [ ] indentation
 - [ ] package
 - [ ] compile .jal
