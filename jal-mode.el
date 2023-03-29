@@ -1,14 +1,9 @@
-;;; package --- Major mode for JAL(Just Another Language)
+;;; package --- Major mode for JAL(Just Another Language) -*- lexical-binding: t; -*-
 ;;;
 ;;; Commentary:
 ;;;
-;;; created at : 06 Mar 2023 11:27:11 JST
-;;; author     : hidsh
-;;;
-;;; JAL(Just Another Language) is an open source programming language
-;;; to program Microchip PIC controllers.
-;;;
-;;; http://justanotherlanguage.org/
+;;; JAL(Just Another Language) is an open source programming language to progmram
+;;; Microchip PIC controllers. (see URL `http://justanotherlanguage.org/')
 ;;;
 ;;; This major mode supports jalv2 compiler.
 
@@ -34,23 +29,22 @@
 
 (require 'flymake)
 
-;; wip
-;; (require 'jal-mode-indent)
+;; (require 'jal-mode-indent)       ;; wip
 
 (defcustom jal-mode-compiler-path ""
   "Path string to Jal compiler (jalv2).
 This variable is referred when compiling and using `flymake'.
 But `flycheck' does NOT refer this variable because of its structure.
 
-If you use your favorite ckecker executable for `flycheck',
-use command `flycheck-set-checker-executable' as following:
+If you would like to use your favorite executable as a checker for
+`flycheck', use command `flycheck-set-checker-executable' as following:
 
   M-x flycheck-set-checker-executable <RET> JAL
       <RET> C:/jallib-pack-bee-jalv25r6-20220522/compiler/jalv2_64.exe")
 
 (defcustom jal-mode-lib-path ""
   "Path string to jallib (see URL `https://github.com/jallib/jallib').
-This variable is referred when compiling, flymake and flycheck.
+This variable is referred when use of `compile', `flymake' and `flycheck'.
 It should be used absolute path due to prevent \"include\" errors.")
 
 (defvar jal-mode-compile-hook nil
@@ -62,7 +56,7 @@ It should be used absolute path due to prevent \"include\" errors.")
 
 (defconst jal-mode-number-literal
   '(("\\<\\(?:\\(\\([_.0-9]+\\)\\|\\(\\(0b\\|0B\\)[_01]+\\)\\|\\(0x\\|0X\\)[_0-9A-Fa-f]+\\)\\)\\>" . font-lock-constant-face))
-  "Number literal patterns in font-lock.
+  "Number literal patterns for font-lock.
 e.g. \"400_000_000\", \"0xA5\", \"0b01010_0101\"")
 
 (require 'jallib-consts)            ;; jal-mode-constants (generated)
@@ -249,7 +243,7 @@ e.g. \"400_000_000\", \"0xA5\", \"0b01010_0101\"")
   "JAL mode is a major mode for editing JAL source files.
 About JAL, see URL `http://justanotherlanguage.org/'"
 
-  ;; fontlock
+  ;; font-lock
   (setq font-lock-defaults jal-mode-font-lock-defaults)
   (font-lock-add-keywords 'jal-mode jal-mode-number-literal)
 
@@ -319,14 +313,9 @@ About JAL, see URL `http://justanotherlanguage.org/'"
          (local-dir   (file-name-directory buffer-file-name))
          ;; (local-file  (file-relative-name temp-file local-dir))
          (local-file  temp-file)
-         (log-file    (concat (file-name-base local-file) ".log"))
-
-         (opt (concat
-               " ")))
+         (log-file    (concat (file-name-base local-file) ".log")))
     (list exe (list local-file
                     ;; "-no-asm" "-no-codfile" "-no-hex" "-no-lst" "-no-log" ;; NG
-                    ;; "-no-hex"    ;; ok
-                    ;; "-no-asm" "-no-codfile" "-no-lst" "-no-log"
                     "-no-asm" "-no-codfile" "-no-lst" "-no-hex"
                     "-no-codegen" "-no-debug" "-no-pcode" "-Wall"
                     "-s" lib))))
