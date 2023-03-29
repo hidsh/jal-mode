@@ -26,5 +26,4 @@
 (add-to-list 'flycheck-checkers 'jal)
 
 (provide 'flycheck-jal)
-
 ;;; flycheck-jal.el ends here
