@@ -18,9 +18,10 @@ This major mode will support jalv2 compiler.
 
 ## TODO
 - [x] font-lock syntax highlighting
-- [ ] indentation
+- [ ] indentation (smie?)
 - [ ] package
-- [ ] compile .jal
+- [x] compile .jal
 - [ ] programming .hex into pic micro controller
-- [ ] flycheck
+- [x] flymake
+- [x] flycheck
 - [ ] completing
