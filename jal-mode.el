@@ -171,7 +171,7 @@ e.g. \"400_000_000\", \"0xA5\", \"0b01010_0101\"")
      ( ,(regexp-opt jal-mode-builtins       'symbols) . font-lock-builtin-face)
      ( ,(regexp-opt jal-mode-keywords       'symbols) . font-lock-keyword-face)
      ( ,(regexp-opt jal-mode-types          'symbols) . font-lock-type-face)
-     ))
+     ) nil t)
   "Font lock setting in JAL mode.")
 
 (defvar jal-mode-syntax-table
