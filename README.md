@@ -30,7 +30,7 @@ This major mode supports jalv2 compiler and jallib.
 )
 ```
 
-# Keybindings
+# Default keybindings
 |Function|Key|Function name|
 |:--|:--|:--|
 |Compile|C-c C-c|jal-mode-compile|
