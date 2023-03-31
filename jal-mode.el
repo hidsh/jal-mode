@@ -29,7 +29,7 @@
 
 (require 'flymake)
 
-;; (require 'jal-mode-indent)       ;; wip
+(require 'jal-smie)       ;; wip
 
 (defcustom jal-mode-compiler-path ""
   "Path string to Jal compiler (jalv2).
@@ -254,7 +254,9 @@ About JAL, see URL `http://justanotherlanguage.org/'"
   (setq comment-multi-line nil)
 
   ;; indentation
-  ;; (setq indent-line-function #'jal-mode-indent-func)
+  ;; (smie-setup jal-smie-grammar #'jal-smie-rules
+  ;;             :forward-token  #'jal-smie-forward-token
+  ;;             :backward-token #'jal-smie-backward-token)
 
   ;; flymake settings
   ;; Error message from jalv2 is something like 'test.jal:7: "x" not defined'
