@@ -254,9 +254,9 @@ About JAL, see URL `http://justanotherlanguage.org/'"
   (setq comment-multi-line nil)
 
   ;; indentation
-  ;; (smie-setup jal-smie-grammar #'jal-smie-rules
-  ;;             :forward-token  #'jal-smie-forward-token
-  ;;             :backward-token #'jal-smie-backward-token)
+  (smie-setup jal-smie-grammar #'jal-smie-rules
+              :forward-token  #'jal-smie-forward-token
+              :backward-token #'jal-smie-backward-token)
 
   ;; flymake settings
   ;; Error message from jalv2 is something like 'test.jal:7: "x" not defined'
