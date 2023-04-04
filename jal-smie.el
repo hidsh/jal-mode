@@ -15,9 +15,11 @@
 ;;; 10   task xx is .. end task
 ;;; 11   assembler .. end assembler
 ;;; 12   record xx is .. end record
+;;; 13   asm mnemonics and operands
 ;;;
 ;;; -- TODOs ----------------------------------------
-;;;   support case insesitive --> shoud it do (let ((case-fold-search t)) ???
+;;;   support case insesitive --> replace string= -> (require 'cl-lib) then cl-equalp
+;;;   operators in jal-smie-grammar
 ;;;   And SEARCH todo in jal-smie.el !
 
 ;;; Code:
@@ -346,9 +348,9 @@ continue the search.
                   'loop)
                (t  'loop))))
       (if (eq stat 'quit)
-          (error "jal-smie--search-begin-token: Not found any token at %d: stat=%S, pt=%d, pt-bk=%d, tok=%S"
+          (error "jal-smie--search-begin-token: Not found any token at %d: stat=%S, pt=%d, pt-bak=%d, tok=%S"
                  (point) stat pt pt-bak tok)
-        (message "jal-smie--search-begin-token: Found token at %d: stat=%S, pt=%d, pt-bk=%d, tok=%S"
+        (message "jal-smie--search-begin-token: Found token at %d: stat=%S, pt=%d, pt-bak=%d, tok=%S"
                  (point) stat pt pt-bak tok)
         (list tok (current-indentation) (current-column) (point))))))
 

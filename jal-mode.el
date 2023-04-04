@@ -13,7 +13,7 @@
 ;;;   :config
 ;;;   (setq tab-width 4)                          ;; as you like
 ;;;   (setq jal-mode-compiler-path "/SOMEWHERE/jalv2-XXXX")
-;;;   (setq jal-mode-lib-path "/SOMEWHERE/jallib-XXXX")
+;;;   (setq jal-mode-lib-path "/SOMEWHERE/jallib-XXXX/lib")
 ;;;
 ;;;   ;; Enable flymake
 ;;;   (setq temporary-file-directory "~/tmp")     ;; as you like
@@ -24,6 +24,10 @@
 ;;;     :config
 ;;;     (add-hook 'jal-mode-hook #'flycheck-mode))
 ;;; )
+;;;
+;;; TODOs:
+;;;   support case insesitive --> (setq case-fold-search t)
+;;;   jal-mode-compile --> M-x compile
 
 ;;; Code:
 
