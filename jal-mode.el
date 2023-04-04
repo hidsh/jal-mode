@@ -1,4 +1,4 @@
-;;; package --- Major mode for JAL(Just Another Language) -*- lexical-binding: t; -*-
+;;; package --- Major mode for JAL(Just Another Language)
 ;;;
 ;;; Commentary:
 ;;;
@@ -63,10 +63,7 @@ e.g. \"400_000_000\", \"0xA5\", \"0b01010_0101\"")
 (require 'jallib-funcs-procs)       ;; jal-mode-builtins (generated)
 
 (defvar jal-mode-preprocessors
-  '("pragma"
-    "is"
-    "at"
-    "of")
+  '("pragma")
   "JAL's pragma and others from jalv2.pdf")
 
 (defvar jal-mode-types
@@ -89,6 +86,10 @@ e.g. \"400_000_000\", \"0xA5\", \"0b01010_0101\"")
     "const"
     "alias"
     "local"
+
+    "is"
+    "at"
+    "of"
 
     ;; flow controls
     "block"
