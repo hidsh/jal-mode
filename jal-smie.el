@@ -2,6 +2,24 @@
 ;;;
 ;;; Commentary:
 ;;;
+;;; -- FEATURE LIST ---------------------------------
+;;;  1 v block .. end block
+;;;  2 v if xx then .. elsif xx then .. else .. end if
+;;;  3 v case xx of .. end case
+;;;  4   for xx loop .. end loop
+;;;  5   forever loop .. end loop
+;;;  6   repeat .. until xx
+;;;  7   while xx loop .. end loop
+;;;  8   procedure xx is .. end procedure
+;;;  9   function xx is .. end function
+;;; 10   task xx is .. end task
+;;; 11   assembler .. end assembler
+;;; 12   record xx is .. end record
+;;;
+;;; -- TODOs ----------------------------------------
+;;;   support case insesitive --> shoud it do (let ((case-fold-search t)) ???
+;;;   And SEARCH todo in jal-smie.el !
+
 ;;; Code:
 
 (require 'smie)
