@@ -30,12 +30,12 @@ This major mode supports jalv2 compiler and jallib.
 )
 ```
 
-# Default keybindings
+## Default keybindings
 |Function|Key|Function name|
 |:--|:--|:--|
-|Compile|C-c C-c|jal-mode-compile|
-|Next error|C-c C-n|flymake-goto-next-error|
-|Previous error|C-c C-p|flymake-goto-prev-error|
+|Compile|`C-c` `C-c`|`jal-mode-compile`|
+|Next error|`C-c` `C-n`|`flymake-goto-next-error`|
+|Previous error|`C-c` `C-p`|`flymake-goto-prev-error`|
 
 ## TODO
 - [x] font-lock syntax highlighting
