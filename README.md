@@ -17,7 +17,7 @@ This major mode supports jalv2 compiler and jallib.
   :config
   (setq tab-width 4)                          ;; as you like
   (setq jal-mode-compiler-path "/SOMEWHERE/jalv2-XXXX")
-  (setq jal-mode-lib-path "/SOMEWHERE/jallib-XXXX")
+  (setq jal-mode-lib-path "/SOMEWHERE/jallib-XXXX/lib")
 
   ;; Enable flymake
   (setq temporary-file-directory "~/tmp")     ;; as you like
