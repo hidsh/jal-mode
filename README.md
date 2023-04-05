@@ -42,9 +42,11 @@ This major mode supports jalv2 compiler and jallib.
   - [ ] inline asm 
 - [x] compile .jal
 - [x] flymake
+
   - [ ] warning
 - [x] flycheck
   - [ ] warning
+- [ ] case insensitive
 - [ ] programming .hex into pic micro controller
 - [ ] package
 - [ ] indentation (smie?)
