@@ -38,7 +38,8 @@ This major mode supports jalv2 compiler and jallib.
 |Previous error|`C-c` `C-p`|`flymake-goto-prev-error`|
 
 ## TODO
-- [x] font-lock syntax highlighting
+- [x] syntax highlighting (font-lock)
+  - [ ] inline asm 
 - [x] compile .jal
 - [x] flymake
 - [x] flycheck
