@@ -362,7 +362,7 @@ About JAL, see URL `http://justanotherlanguage.org/'"
       (user-error "Directory not found: %s" circuitpy-dir))
     (setq dest (concat circuitpy-dir (file-name-nondirectory hex-path)))
 
-    ;; (copy-file hex-path dest)
+    (copy-file hex-path dest)
     (message "Copied %s --> %s" hex-path dest)))
 
 ;;

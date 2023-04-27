@@ -6,9 +6,9 @@ Emacs major mode for editing [JAL](http://justanotherlanguage.org/) source file
 
 **WIP**
 
-JAL is a programming language to program Microchip PIC controllers.
+JAL is a programming language to program [Microchip PIC MCU](https://www.microchip.com/en-us/products/microcontrollers-and-microprocessors/8-bit-mcus/pic-mcus).
 
-This major mode supports jalv2 compiler and jallib.
+This major mode supports [jalv2 compiler](https://github.com/jallib/jalv2compiler) and [jallib](https://github.com/jallib/jallib).
 
 ## Example settings
 
@@ -37,6 +37,7 @@ This major mode supports jalv2 compiler and jallib.
 |Function|Key|Function name|
 |:--|:--|:--|
 |Compile|`C-c` `C-c`|`jal-mode-compile`|
+|Program .hex|`C-c` `C-w`|`jal-mode-prog`|
 |Next error|`C-c` `C-n`|`flymake-goto-next-error`|
 |Previous error|`C-c` `C-p`|`flymake-goto-prev-error`|
 
@@ -58,6 +59,7 @@ This major mode supports jalv2 compiler and jallib.
 
 ## Links
 - [JAL (Just Another Language)](http://justanotherlanguage.org/)
+- [jalv2 Compiler](https://github.com/jallib/jalv2compiler)
 - [jallib](https://github.com/jallib/jallib)
 - [jallist (JAL Group)](https://groups.google.com/g/jallist)
 - [RP2PIC Programmer](https://github.com/hidsh/rp2pic)
