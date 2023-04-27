@@ -15,6 +15,9 @@
 ;;;   (setq jal-mode-compiler-path "/SOMEWHERE/jalv2-XXXX")
 ;;;   (setq jal-mode-lib-path "/SOMEWHERE/jallib-XXXX")
 ;;;
+;;;   ;; Use RP2PIC as PIC programmer
+;;;   (setq jal-mode-prog-func #'jal-mode-prog-func--rp2pic)
+;;;
 ;;;   ;; Enable flymake
 ;;;   (setq temporary-file-directory "~/tmp")     ;; as you like
 ;;;   (add-hook 'jal-mode-hook #'flymake-mode)
@@ -46,6 +49,10 @@ If you would like to use your favorite executable as a checker for
   "Path string to jallib (see URL `https://github.com/jallib/jallib').
 This variable is referred when use of `compile', `flymake' and `flycheck'.
 It should be used absolute path due to prevent \"include\" errors.")
+
+(defcustom jal-mode-prog-func nil
+  "Function used to programming PIC micro-controller.
+e.g. (defun jal-mode-prog-func--my-programmer (hex-path) ...)")
 
 (defvar jal-mode-compile-hook nil
   "Variable for callbacks when compiling done")
@@ -215,6 +222,7 @@ e.g. \"400_000_000\", \"0xA5\", \"0b01010_0101\"")
   (let ((map (make-sparse-keymap)))
     ;; jal-mode specific
     (define-key map "\C-c\C-c" #'jal-mode-compile)
+    (define-key map "\C-c\C-w" #'jal-mode-prog)
     (define-key map "\C-c\C-p" 'flymake-goto-prev-error)
     (define-key map "\C-c\C-n" 'flymake-goto-next-error)
 
@@ -319,6 +327,49 @@ About JAL, see URL `http://justanotherlanguage.org/'"
                     "-no-asm" "-no-codfile" "-no-lst" "-no-hex"
                     "-no-codegen" "-no-debug" "-no-pcode" "-Wall"
                     "-s" lib))))
+
+;;
+;; PIC Programmer
+;;
+
+;;;###autoload
+(defun jal-mode-prog ()
+  (interactive)
+  (unless jal-mode-prog-func
+    (user-error "`jal-mode-prog-func' is not set"))
+  (cl-flet ((replace-file-path-ext (path ext)
+                                   (concat (file-name-sans-extension path) ext)))
+    (let* ((jal (buffer-file-name))
+           (hex (replace-file-path-ext jal ".hex")))
+      (unless jal
+        (user-error "File not visited"))
+      (unless (file-exists-p hex)
+        (user-error "File not found: %s" hex))
+
+      (funcall jal-mode-prog-func hex))))
+
+;;;###autoload
+(defun jal-mode-prog-func--rp2pic (hex-path)
+  "RP2PIC programmer (https://github.com/hidsh/rp2pic)"
+  (let ((circuitpy-dir
+         (pcase system-type
+           ('windows-nt   "E:\\")   ;; TODO replace to better method
+           ('gnu/linux    (format "/media/%s/CIRCUITPY/" (getenv "USER")))
+           ('darwin       "/Volumes/CIRCUITPY/")
+           (_ (user-error "Unknown system-type: %s" system-type))))
+        dest)
+    (unless (file-exists-p circuitpy-dir)
+      (user-error "Directory not found: %s" circuitpy-dir))
+    (setq dest (concat circuitpy-dir (file-name-nondirectory hex-path)))
+
+    ;; (copy-file hex-path dest)
+    (message "Copied %s --> %s" hex-path dest)))
+
+;;
+;; TODO add other programmers
+;;
+;; (defun jal-mode-prog-func--XXXX (hex-path)
+
 
 (provide 'jal-mode)
 ;;; jal-mode.el ends here

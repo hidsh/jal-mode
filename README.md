@@ -19,6 +19,9 @@ This major mode supports jalv2 compiler and jallib.
   (setq jal-mode-compiler-path "/SOMEWHERE/jalv2-XXXX")
   (setq jal-mode-lib-path "/SOMEWHERE/jallib-XXXX/lib")
 
+  ;; Use RP2PIC as a PIC programmer
+  (setq jal-mode-prog-func #'jal-mode-prog-func--rp2pic)
+
   ;; Enable flymake
   (setq temporary-file-directory "~/tmp")     ;; as you like
   (add-hook 'jal-mode-hook #'flymake-mode)
@@ -42,17 +45,19 @@ This major mode supports jalv2 compiler and jallib.
   - [ ] inline asm 
 - [x] compile .jal
 - [x] flymake
-
   - [ ] warning
 - [x] flycheck
   - [ ] warning
 - [ ] case insensitive
 - [ ] programming .hex into pic micro controller
+  - [x] RP2PIC programmer
+  - [ ] other programmers
 - [ ] package
-- [ ] indentation (smie?)
+- [ ] auto indentation (smie?)
 - [ ] completion
 
 ## Links
 - [JAL (Just Another Language)](http://justanotherlanguage.org/)
 - [jallib](https://github.com/jallib/jallib)
 - [jallist (JAL Group)](https://groups.google.com/g/jallist)
+- [RP2PIC Programmer](https://github.com/hidsh/rp2pic)
